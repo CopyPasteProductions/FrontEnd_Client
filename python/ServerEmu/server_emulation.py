@@ -6,8 +6,9 @@ app = Flask(__name__)
 
 example_game_card = [
     {
-        "gamename" : "This is a game",
-        "playerNumbers": 5,
+        "id": 0,
+        "name" : "This is a game",
+        "numberOfPlayers": 5,
         "isPlayersTurn": False,
         "currentScore" : 0,
         "active" : True
