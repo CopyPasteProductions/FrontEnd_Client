@@ -1,5 +1,5 @@
 import {ViewChild} from '@angular/core';
-import {App, Platform, MenuController} from 'ionic-angular';
+import {App, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ClientRootPage} from './pages/client-root/client-root';
@@ -8,19 +8,19 @@ import {ListPage} from './pages/list/list';
 
 @App({
   templateUrl: 'build/app.html',
-  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
-  queries: {
-    nav: new ViewChild('content')
-  }
+  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
 })
 class MyApp {
-  static get parameters() {
-    return [[Platform], [MenuController]];
-  }
+  @ViewChild(Nav) nav: Nav;
 
-  constructor(platform, menu) {
-    this.platform = platform;
-    this.menu = menu;
+  // make HelloIonicPage the root (or first) page
+  rootPage: any = ClientRootPage;
+  pages: Array<{title: string, component: any}>;
+
+  constructor(
+    private platform: Platform,
+    private menu: MenuController
+  ) {
     this.initializeApp();
 
     // set our app's pages
@@ -28,11 +28,7 @@ class MyApp {
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'Client Root', component: ClientRootPage },
       { title: 'My First List', component: ListPage }
-      
     ];
-
-    // make HelloIonicPage the root (or first) page
-    this.rootPage = ClientRootPage;
   }
 
   initializeApp() {
