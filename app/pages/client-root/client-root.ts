@@ -13,15 +13,24 @@ export class ClientRootPage implements OnInit{
   errorMessage: string;
 
   getGamesFromService() {
-    this.backendService.getGames().subscribe(games => this.games = games,  error =>  this.errorMessage = <any>error);
-    console.log(this.games)
+    this.backendService.getGames().subscribe(games => (this.setGames(games)),  error =>  this.errorMessage = <any>error);
+    console.log("GET GAMES FROM SERVICE" + this.games)
     if(this.errorMessage != undefined){
       console.log("Error Thrown")
       console.log(this.errorMessage)
     }
     
   }
-
+  private setGames(games:Game[])
+  {
+     console.log("GET GAMES FROM SERVICE" + games)
+     this.games = games;
+     
+     games.forEach(element => {
+       console.log(element.toString());
+     });
+     
+  }
   ngOnInit()
   { this.getGamesFromService(); }
 }

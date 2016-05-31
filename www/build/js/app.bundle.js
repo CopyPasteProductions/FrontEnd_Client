@@ -133,12 +133,19 @@ var ClientRootPage = (function () {
     }
     ClientRootPage.prototype.getGamesFromService = function () {
         var _this = this;
-        this.backendService.getGames().subscribe(function (games) { return _this.games = games; }, function (error) { return _this.errorMessage = error; });
-        console.log(this.games);
+        this.backendService.getGames().subscribe(function (games) { return (_this.setGames(games)); }, function (error) { return _this.errorMessage = error; });
+        console.log("GET GAMES FROM SERVICE" + this.games);
         if (this.errorMessage != undefined) {
             console.log("Error Thrown");
             console.log(this.errorMessage);
         }
+    };
+    ClientRootPage.prototype.setGames = function (games) {
+        console.log("GET GAMES FROM SERVICE" + games);
+        this.games = games;
+        games.forEach(function (element) {
+            console.log(element.toString());
+        });
     };
     ClientRootPage.prototype.ngOnInit = function () { this.getGamesFromService(); };
     ClientRootPage = __decorate([
