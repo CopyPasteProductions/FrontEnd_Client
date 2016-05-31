@@ -10,10 +10,11 @@
 <p>This is the root page!</p>
 
 <ion-list>
-    <ion-card>
+    <ion-card *ngFor="let game of Games">
 
       <ion-card-header>
         Card Header
+        <p>{{game.name}}</p>
       </ion-card-header>
 
       <ion-card-content>

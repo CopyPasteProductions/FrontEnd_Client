@@ -2,5 +2,12 @@
   "name": "MyIonic2Project",
   "app_id": "",
   "v2": true,
-  "typescript": true
+  "typescript": true,
+  "proxies": [
+    {
+      "path": "http://localhost:8100/api/requestgames",
+      "proxyUrl": "http://localhost:5000/api/requestgames"
+      
+    }
+  ]
 }

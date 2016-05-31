@@ -19,7 +19,7 @@ export /**
  */
     class BackEndService {
     constructor(private http: Http) { }
-    GAME_FIND_API_URL = "";
+    GAME_FIND_API_URL = "http://localhost:5000/api/requestgames";
 
 
     getGames(): Observable<Game[]> {
@@ -29,7 +29,10 @@ export /**
     }
 
     private extractData(res: Response) {
+        console.log("Response:" + res.text())
         let body = res.json();
+        console.log("body:" + body);
+        console.log("data:" + body.data[0]);
         return body.data || {};
     }
 

@@ -4,12 +4,18 @@ import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ClientRootPage} from './pages/client-root/client-root';
 import {ListPage} from './pages/list/list';
+import { HTTP_PROVIDERS } from '@angular/http';
+import {BackEndService} from './game.data.service';
+
 
 
 @App({
   templateUrl: 'build/app.html',
-  config: {} // http://ionicframework.com/docs/v2/api/config/Config/
+  config: {}, // http://ionicframework.com/docs/v2/api/config/Config/
+  providers: [BackEndService]
 })
+
+
 class MyApp {
   @ViewChild(Nav) nav: Nav;
 
