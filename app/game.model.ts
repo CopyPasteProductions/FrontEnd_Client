@@ -1,8 +1,8 @@
 
 export /**
- * Game
+ * GameOverview
  */
-    class Game {
+    class GameOverview {
     id: number;
     name: string;
     numberOfPlayers: number;
@@ -15,6 +15,6 @@ export /**
     }
     
     public toString() : string { 
-        return "Game [id: " + this.id + " name: " + this.name+"]";
+        return "GameOverview [id: " + this.id + " name: " + this.name+"]";
     }
 }
