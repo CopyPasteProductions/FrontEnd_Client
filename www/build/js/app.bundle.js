@@ -95,8 +95,7 @@ var BackEndService = (function () {
         console.log("Response:" + res.text());
         var body = res.json();
         console.log("body:" + body);
-        console.log("data:" + body.data[0]);
-        return body.data || {};
+        return body || {};
     };
     BackEndService.prototype.handleError = function (error) {
         // In a real world app, we might use a remote logging infrastructure
@@ -143,9 +142,6 @@ var ClientRootPage = (function () {
     ClientRootPage.prototype.setGames = function (games) {
         console.log("GET GAMES FROM SERVICE" + games);
         this.games = games;
-        games.forEach(function (element) {
-            console.log(element.toString());
-        });
     };
     ClientRootPage.prototype.ngOnInit = function () { this.getGamesFromService(); };
     ClientRootPage = __decorate([

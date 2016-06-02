@@ -32,8 +32,7 @@ export /**
         console.log("Response:" + res.text())
         let body = res.json();
         console.log("body:" + body);
-        console.log("data:" + body.data[0]);
-        return body.data || {};
+        return body || {};
     }
 
     private handleError(error: any) {

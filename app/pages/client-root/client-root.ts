@@ -25,11 +25,7 @@ export class ClientRootPage implements OnInit{
   {
      console.log("GET GAMES FROM SERVICE" + games)
      this.games = games;
-     
-     games.forEach(element => {
-       console.log(element.toString());
-     });
-     
+              
   }
   ngOnInit()
   { this.getGamesFromService(); }
