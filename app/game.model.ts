@@ -5,7 +5,7 @@ export /**
     class GameOverview {
     Id: number;
     Name: string;
-    IsPlayersTurn: boolean;
+    ActivePlayerId: number;
     CurrentScore: number;
     Active: boolean;
     Players: Player[];
