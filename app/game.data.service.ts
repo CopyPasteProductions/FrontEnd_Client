@@ -19,7 +19,7 @@ export /**
  */
     class BackEndService {
     constructor(private http: Http) { }
-    GAME_FIND_API_URL = "http://localhost:5000/api/requestgames";
+    GAME_FIND_API_URL = "https://microsoft-apiapp966cc7695d704dbfa334a55635efab78.azurewebsites.net:443/api/GameOverviews";
 
 
     getGames(): Observable<Game[]> {
