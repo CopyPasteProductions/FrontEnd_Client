@@ -20,10 +20,13 @@
       </ion-item>
       <ion-card-content>
         <!-- Add card content here! -->
-        <ion-list *ngFor="let p of game.Players">
-          <ion-icon *ngIf="game.ActivePlayerId==p.Id" name="person"></ion-icon>
-          <ion-icon *ngIf="game.ActivePlayerId != p.Id" name="home"></ion-icon>
-        </ion-list>
+        <ion-grid>
+          <ion-row >
+            <ion-column *ngFor="let p of game.Players">
+              <ion-icon *ngIf="game.ActivePlayerId == p.Id" name="person"></ion-icon> <ion-icon *ngIf="game.ActivePlayerId != p.Id" name="home"></ion-icon>
+            </ion-column>
+          </ion-row>
+        </ion-grid>
       </ion-card-content>
 
     </ion-card>
