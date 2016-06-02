@@ -4,20 +4,13 @@ export /**
  */
     class GameOverview {
     Id: number;
-    name: string;
-    NumberOfPlayers: number;
+    Name: string;
     IsPlayersTurn: boolean;
     CurrentScore: number;
     Active: boolean;
     Players: Player[];
     
-    constructor() {
-
-    }
-    
-    public toString() : string { 
-        return "GameOverview [id: " + this.Id + " name: " + this.name+"]";
-    }
+    constructor() {}
 }
 
 
