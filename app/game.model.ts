@@ -9,7 +9,8 @@ export /**
     IsPlayersTurn: boolean;
     CurrentScore: number;
     Active: boolean;
-
+    Players: Player[];
+    
     constructor() {
 
     }
@@ -17,4 +18,19 @@ export /**
     public toString() : string { 
         return "GameOverview [id: " + this.Id + " name: " + this.name+"]";
     }
+}
+
+
+/**
+ * Representation of the player on the gameoverview screen
+ */
+class Player {
+    Id: number;
+    Name: string;
+    Avatar: number;
+    
+    constructor() {
+    }
+    
+    
 }
