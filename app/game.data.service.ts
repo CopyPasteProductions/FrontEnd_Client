@@ -6,7 +6,7 @@ import {Game} from './game.model'
 // Statics
 import 'rxjs/add/observable/throw';
 
-// Operators
+// Operators EGP rules
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
