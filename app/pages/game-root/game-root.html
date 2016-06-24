@@ -1,0 +1,36 @@
+<ion-navbar *navbar>
+  <button menuToggle>
+    <ion-icon name="menu"></ion-icon>
+  </button>
+  <ion-title>Game Root</ion-title>
+</ion-navbar>
+
+
+<ion-content padding class="getting-started">
+
+  <ion-list>
+    <ion-card *ngFor="let game of games">
+
+      <ion-card-header>
+        <h1>{{game.Name}}</h1>
+      </ion-card-header>
+      <ion-item>
+        <p>My Score:</p>
+        <ion-badge item-right>{{game.CurrentScore}}</ion-badge>
+      </ion-item>
+      <ion-card-content>
+        <!-- Add card content here! -->
+        <ion-grid>
+          <ion-row >
+            <ion-column *ngFor="let p of game.Players">
+              <ion-icon *ngIf="game.ActivePlayerId == p.Id" name="person"></ion-icon> <ion-icon *ngIf="game.ActivePlayerId != p.Id" name="home"></ion-icon>
+            </ion-column>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+
+    </ion-card>
+  </ion-list>
+
+
+</ion-content>
