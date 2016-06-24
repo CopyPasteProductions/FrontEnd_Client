@@ -6,7 +6,7 @@ import {Game} from './game.model'
 // Statics
 import 'rxjs/add/observable/throw';
 
-// Operators Emiliano really rules
+// Operators
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
