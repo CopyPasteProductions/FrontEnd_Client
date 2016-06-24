@@ -4,7 +4,7 @@ import {Game} from '../../game.model'
 import {Player} from '../../game.model'
 import {OnInit} from '@angular/core'
 @Page({
-  templateUrl: 'build/pages/client-root/client-root.html'
+  templateUrl: 'build/pages/game-root/game-root.html'
 })
 export class GameRootPage implements OnInit {
   constructor(private backendService: BackEndService) {

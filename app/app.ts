@@ -3,6 +3,7 @@ import {App, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {HelloIonicPage} from './pages/hello-ionic/hello-ionic';
 import {ClientRootPage} from './pages/client-root/client-root';
+import {GameRootPage} from './pages/game-root/game-root';
 import {ListPage} from './pages/list/list';
 import { HTTP_PROVIDERS } from '@angular/http';
 import {BackEndService} from './game.data.service';
@@ -33,8 +34,10 @@ class MyApp {
     this.pages = [
       { title: 'Hello Ionic', component: HelloIonicPage },
       { title: 'Client Root', component: ClientRootPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'My First List', component: ListPage },
+      { title: 'Game Root', component: GameRootPage }
     ];
+  
   }
 
   initializeApp() {
