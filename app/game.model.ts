@@ -13,7 +13,7 @@ export /**
     constructor() {}
 }
 
-
+export
 /**
  * Representation of the player on the gameoverview screen
  */
