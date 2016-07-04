@@ -14,6 +14,7 @@ var ionic_angular_1 = require('ionic-angular');
 var ionic_native_1 = require('ionic-native');
 var hello_ionic_1 = require('./pages/hello-ionic/hello-ionic');
 var client_root_1 = require('./pages/client-root/client-root');
+var game_root_1 = require('./pages/game-root/game-root');
 var list_1 = require('./pages/list/list');
 var game_data_service_1 = require('./game.data.service');
 var MyApp = (function () {
@@ -27,7 +28,8 @@ var MyApp = (function () {
         this.pages = [
             { title: 'Hello Ionic', component: hello_ionic_1.HelloIonicPage },
             { title: 'Client Root', component: client_root_1.ClientRootPage },
-            { title: 'My First List', component: list_1.ListPage }
+            { title: 'My First List', component: list_1.ListPage },
+            { title: 'Game Root', component: game_root_1.GameRootPage }
         ];
     }
     MyApp.prototype.initializeApp = function () {
@@ -58,7 +60,7 @@ var MyApp = (function () {
     return MyApp;
 }());
 
-},{"./game.data.service":2,"./pages/client-root/client-root":4,"./pages/hello-ionic/hello-ionic":5,"./pages/list/list":7,"@angular/core":140,"ionic-angular":389,"ionic-native":412}],2:[function(require,module,exports){
+},{"./game.data.service":2,"./pages/client-root/client-root":3,"./pages/game-root/game-root":4,"./pages/hello-ionic/hello-ionic":5,"./pages/list/list":7,"@angular/core":140,"ionic-angular":389,"ionic-native":412}],2:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -74,7 +76,7 @@ var http_1 = require('@angular/http');
 var Observable_1 = require('rxjs/Observable');
 // Statics
 require('rxjs/add/observable/throw');
-// Operators
+// Operators Emiliano really rules
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/debounceTime');
 require('rxjs/add/operator/distinctUntilChanged');
@@ -115,22 +117,48 @@ exports.BackEndService = BackEndService;
 
 },{"@angular/core":140,"@angular/http":216,"rxjs/Observable":474,"rxjs/add/observable/throw":501,"rxjs/add/operator/catch":512,"rxjs/add/operator/debounceTime":521,"rxjs/add/operator/distinctUntilChanged":526,"rxjs/add/operator/map":537,"rxjs/add/operator/switchMap":568,"rxjs/add/operator/toPromise":579}],3:[function(require,module,exports){
 "use strict";
-var GameOverview = (function () {
-    function GameOverview() {
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var ionic_angular_1 = require('ionic-angular');
+var game_data_service_1 = require('../../game.data.service');
+var ClientRootPage = (function () {
+    function ClientRootPage(backendService) {
+        this.backendService = backendService;
     }
-    return GameOverview;
+    //controller methods
+    ClientRootPage.prototype.getGamesFromService = function () {
+        var _this = this;
+        this.backendService.getGames().subscribe(function (gs) { return (_this.setGames(gs)); }, function (error) { return _this.errorMessage = error; });
+        console.log("GET GAMES FROM SERVICE" + this.games);
+        if (this.errorMessage != undefined) {
+            console.log("Error Thrown");
+            console.log(this.errorMessage);
+        }
+    };
+    ClientRootPage.prototype.setGames = function (games) {
+        console.log("GET GAMES FROM SERVICE" + games);
+        this.games = games;
+    };
+    //On html load
+    ClientRootPage.prototype.ngOnInit = function () { this.getGamesFromService(); };
+    ClientRootPage = __decorate([
+        ionic_angular_1.Page({
+            templateUrl: 'build/pages/client-root/client-root.html'
+        }), 
+        __metadata('design:paramtypes', [game_data_service_1.BackEndService])
+    ], ClientRootPage);
+    return ClientRootPage;
 }());
-exports.GameOverview = GameOverview;
-/**
- * Representation of the player on the gameoverview screen
- */
-var Player = (function () {
-    function Player() {
-    }
-    return Player;
-}());
+exports.ClientRootPage = ClientRootPage;
 
-},{}],4:[function(require,module,exports){
+},{"../../game.data.service":2,"ionic-angular":389}],4:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -143,39 +171,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var ionic_angular_1 = require('ionic-angular');
 var game_data_service_1 = require('../../game.data.service');
-var game_model_1 = require('../../game.model');
-var ClientRootPage = (function () {
-    function ClientRootPage(backendService) {
+var GameRootPage = (function () {
+    function GameRootPage(backendService) {
         this.backendService = backendService;
     }
-    ClientRootPage.prototype.getGamesFromService = function () {
-        var _this = this;
-        this.backendService.getGames().subscribe(function (games) { return (_this.setGames(games)); }, function (error) { return _this.errorMessage = error; });
-        console.log("GET GAMES FROM SERVICE" + this.games);
-        if (this.errorMessage != undefined) {
-            console.log("Error Thrown");
-            console.log(this.errorMessage);
-        }
-    };
-    ClientRootPage.prototype.setGames = function (games) {
-        console.log("GET GAMES FROM SERVICE" + games);
-        this.games = games;
-    };
-    ClientRootPage.prototype.isPlayerActive = function (game, player) {
-        return game.ActivePlayerId == game_model_1.Player.Id;
-    };
-    ClientRootPage.prototype.ngOnInit = function () { this.getGamesFromService(); };
-    ClientRootPage = __decorate([
+    //TODO: add players
+    GameRootPage.prototype.ngOnInit = function () { };
+    GameRootPage = __decorate([
         ionic_angular_1.Page({
-            templateUrl: 'build/pages/client-root/client-root.html'
+            templateUrl: 'build/pages/game-root/game-root.html'
         }), 
         __metadata('design:paramtypes', [game_data_service_1.BackEndService])
-    ], ClientRootPage);
-    return ClientRootPage;
+    ], GameRootPage);
+    return GameRootPage;
 }());
-exports.ClientRootPage = ClientRootPage;
+exports.GameRootPage = GameRootPage;
 
-},{"../../game.data.service":2,"../../game.model":3,"ionic-angular":389}],5:[function(require,module,exports){
+},{"../../game.data.service":2,"ionic-angular":389}],5:[function(require,module,exports){
 "use strict";
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
